@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+    <titleScroll></titleScroll>
     <router-view/>
   </div>
 </template>
 
 <script>
+import titleScroll from '@/components/titlescroll'
 export default {
-  name: 'App'
+  name: 'App',
+  components:{
+    titleScroll
+  },
 }
 </script>
 

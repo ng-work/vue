@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import "./my-theme/index.less";
 import iview from "iview";
+Vue.use(iview)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
