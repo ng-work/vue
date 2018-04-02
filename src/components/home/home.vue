@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="banner">
         <div class="img-banner">
             <img src="/static/img/banner.png" alt="">
@@ -13,20 +14,29 @@
             </div>
             <div class="text">
                 <h1 class='h1'>Type something Type</h1>
+                <p class='p1'>Type somethingType somethingType somethingType something</p>
+                <p class="p_button"><Button class="button1">PRESSED</Button></p>
             </div>
         </div>
     </div>
+    <List/>
+</div>
+    
 </template>
 
 <script>
-let menu = [
-  {name:'home',text:'首页'},
-  {name:'trading',text:'交易中心'},
-  {name:'assets',text:'数字资产'},
-  {name:'user',text:'个人中心'},
-  {name:'market',text:'行情中心'},
-]
+import List from "./list";
+    let menu = [
+        {name:'home',text:'首页'},
+        {name:'trading',text:'交易中心'},
+        {name:'assets',text:'数字资产'},
+        {name:'user',text:'个人中心'},
+        {name:'market',text:'行情中心'},
+    ]
     export default {
+        components:{
+            List
+        },
         data() {
           return {
               menu,
@@ -106,6 +116,7 @@ let menu = [
             color:#fff;
             top:0;
             left:0;
+           
             .h1{
                 height:90px;
                 font-family:PingFangSC-Semibold;
@@ -116,6 +127,34 @@ let menu = [
                 margin-top:230px;
                 font-weight:400;
             }
+             @media screen and (min-width:1440px) {
+                .h1{
+                    margin-top:20%;
+                }
+            }
+            .p1{
+                text-align: center;
+                margin-top: 17px;
+                font-size: 17px;
+            }
+            .p_button{
+                text-align: center;
+                .button1{
+                    background-image:linear-gradient(-180deg, #3fc67c 0%, #009688 100%);
+                    border-radius:5px;
+                    width:216px;
+                    height:38px;
+                    border:none;
+                    margin-top:27px;
+                    color:#fff;
+                    font-size:14px;
+                }
+                .ivu-btn:focus {
+                    -webkit-box-shadow: none;
+                    box-shadow: none;
+                }
+            }
+            
         }
     }
 </style>

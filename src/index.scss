@@ -2,3 +2,17 @@ img{
     line-height: 0;
     font-size: 0;
 }
+
+#app{
+    min-width:1440px;
+
+}
+.clear::before,.clear::after{
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+  }
+@media screen and (max-width:1400px){
+    
+}
