@@ -1,7 +1,7 @@
 <template>
-    <div class="list">
+    <div class="list wrapper">
         <div class="chart_menu">
-            <Menu ref="" class="menus" mode="horizontal"  :active-name="activeName">
+            <Menu ref="" class="menus" mode="horizontal"  :active-name="activeName" @on-select='selectMenu'>
                 <MenuItem v-for="(value,index) in menu" :name="value.name" :key="value.key + index">
                     {{value.name}}
                 </MenuItem>
@@ -20,7 +20,7 @@
                     <div class="charts" :id="'chart'+index"></div>
                 </div>
                 <div class="info_chart">
-                    <p class="bizhong" style="">Ethereum {{item.bi}} <span :class="item.zhangfu >0?'span1 green':'span1 red'">{{item.zhangfu>0?"+"+item.zhangfu+"%":item.zhangfu+'%'}}</span></p>
+                    <p class="bizhong" style=""><img src="/static/img/language.png"/>Ethereum {{item.bi}} <span :class="item.zhangfu >0?'span1 green':'span1 red'">{{item.zhangfu>0?"+"+item.zhangfu+"%":item.zhangfu+'%'}}</span></p>
                     <p class="price">{{ item.price }} {{ item.bi }}<span>${{ item.money }}</span></p>
                 </div>
             </div>
@@ -30,7 +30,7 @@
                     <div class="charts" :id="'chart'+index"></div>
                 </div>
                 <div class="info_chart">
-                    <p class="bizhong" style="">Ethereum {{item.bi}} <span :class="item.zhangfu >0?'span1 green':'span1 red'">{{item.zhangfu>0?"+"+item.zhangfu+"%":item.zhangfu+'%'}}</span></p>
+                    <p class="bizhong" style=""><img src="/static/img/language.png"/>Ethereum {{item.bi}} <span :class="item.zhangfu >0?'span1 green':'span1 red'">{{item.zhangfu>0?"+"+item.zhangfu+"%":item.zhangfu+'%'}}</span></p>
                     <p class="price">{{ item.price }} {{ item.bi }}<span>${{ item.money }}</span></p>
                 </div>
             </div>
@@ -51,6 +51,43 @@ let menu=[
 ];
     let list=[
         {
+            bi:"ETH",
+            star:1,
+            charts:[1.2,3.4,2,0.5,0.9,1.8,2.5,2.8,3,4,5,3.4,4.3,5.3,3.8,3.6,4.9,5.0,6.0],
+            zhangfu:"-0.3",
+            price:"23",
+            money:'334'
+
+        },
+
+         {
+            bi:"ETH",
+            star:1,
+            charts:[1.2,3.4,2,0.5,0.9,1.8,2.5,2.8,3,4,5,3.4,4.3,5.3,3.8,3.6,4.9,5.0,6.0],
+            zhangfu:"-0.3",
+            price:"23",
+            money:'334'
+
+        },
+         {
+            bi:"ETH",
+            star:1,
+            charts:[1.2,3.4,2,0.5,0.9,1.8,2.5,2.8,3,4,5,3.4,4.3,5.3,3.8,3.6,4.9,5.0,6.0],
+            zhangfu:"-0.3",
+            price:"23",
+            money:'334'
+
+        },
+         {
+            bi:"ETH",
+            star:1,
+            charts:[1.2,3.4,2,0.5,0.9,1.8,2.5,2.8,3,4,5,3.4,4.3,5.3,3.8,3.6,4.9,5.0,6.0],
+            zhangfu:"-0.3",
+            price:"23",
+            money:'334'
+
+        },
+         {
             bi:"ETH",
             star:1,
             charts:[1.2,3.4,2,0.5,0.9,1.8,2.5,2.8,3,4,5,3.4,4.3,5.3,3.8,3.6,4.9,5.0,6.0],
@@ -187,13 +224,14 @@ let menu=[
         }
     ]
     import echarts from 'echarts';
+    import bus from '../bus/bus';
     export default {
         name:"list",
         data(){
             return {
                 value:"",
                 menu,
-                activeName:"ETH",
+                activeName:"USDT",
                 show_list:false,
                 array:list,
                 button_info:"See All",
@@ -216,12 +254,10 @@ let menu=[
                 var colors = ['#f6e89d', '#afccf0', '#f4d2af', "#7fd8c0"];  
                 let that = this;
                 this.array.map((item,index)=>{
-                    console.log("123")
                     if (index > 11) return false;
                     let colorindex = parseInt(Math.random()* 4);
                     var el = document.getElementById("chart"+index);
                     if (el) {
-                        console.log(el)
                         echarts.dispose(el)
                         let myChart = echarts.init(el);
                         let option1 = {
@@ -343,6 +379,9 @@ let menu=[
                     this.button_info ='Retract';
                 }
                 
+            },
+            selectMenu(name){
+                bus.$emit("vl_currency",name)
             }
         }
     }
@@ -479,7 +518,12 @@ let menu=[
                         height:30px; 
                         color:#fff;
                         font-family:Helvetica;
-                        padding-left:30px;
+                        // padding-left:30px;
+                        &>img{
+                            display: inline-block;
+                            vertical-align: middle;
+                            margin-right: 8px;
+                        }
                         .span1{
                             font-family:Helvetica-Bold;
                             line-height: 30px;

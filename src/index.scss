@@ -7,6 +7,10 @@ img{
     min-width:1440px;
 
 }
+.wrapper{
+    min-width: 1440px;
+    min-height:300px;
+}
 .clear::before,.clear::after{
     content: '';
     display: block;

@@ -48,7 +48,8 @@
     width: 100%;
     height:29px;
 	// background: #ccc;
-	overflow: hidden;
+    overflow: hidden;
+    min-width: 1440px;
 }
 #scroller {
 	position: absolute;

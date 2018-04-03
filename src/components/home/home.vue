@@ -2,7 +2,7 @@
 <div>
     <div class="banner">
         <div class="img-banner">
-            <img src="/static/img/banner.png" alt="">
+            <img src="/static/img/banner1.png" alt="">
             <Menu ref="main_menu" class="header-menu" mode="horizontal" @on-select="route" :active-name="activeName">
                 <MenuItem v-for="(value,index) in menu" :name="value.name" :key="value.name + index">
                     {{value.text}}
@@ -20,12 +20,16 @@
         </div>
     </div>
     <List/>
+    <Calculator/>
+    <Foot/>
 </div>
     
 </template>
 
 <script>
 import List from "./list";
+import Calculator from './Calculator';
+import Foot from './footer';
     let menu = [
         {name:'home',text:'首页'},
         {name:'trading',text:'交易中心'},
@@ -35,7 +39,7 @@ import List from "./list";
     ]
     export default {
         components:{
-            List
+            List,Calculator,Foot
         },
         data() {
           return {
